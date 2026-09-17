@@ -1,0 +1,59 @@
+/* ============================================================
+   SÃO FRANCISCO CLUB — clube.html
+   Reaproveita as variáveis e classes de css/style.css (.plan-card,
+   .club-checklist, .club-plans-note, etc. já usadas na home). O hero
+   é o mesmo estilo usado em loja.html/promocoes.html, duplicado aqui
+   para esta página não depender de css/loja.css ou css/promos.css.
+   ============================================================ */
+
+.shop-hero{
+  padding:150px 0 64px;
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(36,84,224,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 100%, rgba(179,18,28,0.10) 0%, transparent 55%),
+    var(--ink);
+}
+.shop-hero h1{
+  font-family:var(--font-display);text-transform:uppercase;
+  font-size:clamp(30px,5.2vw,54px);line-height:1.05;letter-spacing:0.01em;
+  max-width:760px;margin:14px 0 18px;
+}
+.shop-hero-sub{font-size:17px;color:#D3CCC2;max-width:520px;}
+@media (max-width:640px){ .shop-hero{padding:130px 0 48px;} }
+
+/* ---------- como funciona ---------- */
+#clube-como-funciona .club-intro-text{max-width:760px;}
+.clube-page-checklist{max-width:520px;}
+
+/* ---------- assinaturas ---------- */
+#clube-assinaturas{
+  background:
+    radial-gradient(ellipse 60% 50% at 12% 0%,rgba(36,84,224,0.08) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 50% at 88% 100%,rgba(179,18,28,0.07) 0%,transparent 60%);
+}
+.clube-page-plans{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  max-width:1080px;margin:0 auto;align-items:start;
+}
+.clube-page-plans .plan-card.is-diamond{margin-top:0;align-self:stretch;display:flex;flex-direction:column;justify-content:center;}
+.clube-page-note{max-width:640px;margin-left:auto;margin-right:auto;}
+
+/* ---------- informações importantes ---------- */
+.clube-info-list{max-width:720px;margin-bottom:32px;}
+.clube-info-list li{
+  position:relative;padding:12px 0 12px 26px;font-size:14.5px;color:#D8D2C8;
+  border-top:1px solid var(--line);
+}
+.clube-info-list li:last-child{border-bottom:1px solid var(--line);}
+.clube-info-list li::before{
+  content:'✓';position:absolute;left:0;top:12px;color:var(--blue);font-weight:700;
+}
+.clube-info-cta{display:flex;gap:16px;flex-wrap:wrap;}
+
+@media (max-width:900px){
+  .clube-page-plans{grid-template-columns:1fr;max-width:420px;}
+}
+@media (max-width:640px){
+  .clube-info-cta{flex-direction:column;}
+  .clube-info-cta .btn{width:100%;text-align:center;}
+}

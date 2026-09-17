@@ -318,33 +318,13 @@
     </div>
   </section>
 
-  <!-- ============ LOCALIZAÇÃO ============ -->
-  <section id="local">
-    <div class="container">
-      <div class="local-layout">
-        <div>
-          <p class="local-heading">Faça-nos<br>uma <span class="accent">visita</span></p>
-          <p class="local-address">
-            <strong>Barbearia São Francisco — Gondomar</strong>
-            Tv. Monte Crasto 48, 8.º Cave<br>
-            4420-210 S. Cosme, Gondomar
-          </p>
-          <a class="btn btn-outline" href="https://maps.google.com/?q=Tv.+Monte+Crasto+48+8+Cave%2C+4420-210+S.+Cosme%2C+Portugal&amp;ftid=0xd246321564abb43%3A0x5b9ffc18044494fe" target="_blank" rel="noopener">Ver rotas no Google Maps</a>
-        </div>
-        <div class="map-embed">
-          <iframe
-            src="https://www.google.com/maps?q=Tv.+Monte+Crasto+48,+4420-210+S.+Cosme,+Portugal&output=embed"
-            width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Mapa — Barbearia São Francisco, Gondomar">
-          </iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CLUBE ============ -->
+  <!-- ============ CLUBE ============
+       Fica agora entre Produtos e Localização. Upgrade visual (glow,
+       gradientes, sombras) é só CSS — ver bloco "CLUBE" em css/style.css.
+       ============================================================ -->
   <section id="clube">
+    <div class="club-glow-a" aria-hidden="true"></div>
+    <div class="club-glow-b" aria-hidden="true"></div>
     <div class="container">
       <span class="eyebrow">São Francisco Club</span>
       <h2 class="section-head" style="margin-bottom:20px;">
@@ -371,6 +351,10 @@
         </div>
       </div>
 
+      <div class="club-more-cta">
+        <a href="clube.html" class="btn btn-outline is-club">Saiba mais sobre o clube</a>
+      </div>
+
       <div class="club-plans">
         <p class="text-center" style="color:var(--muted);margin:36px 0 8px;">Escolha o plano que combina com o seu ritmo e ganhe benefícios únicos.</p>
         <div class="plan-toggle">
@@ -388,7 +372,7 @@
             </a>
           </div>
           <p class="plan-name">São Francisco Club BLACK</p>
-          <p class="plan-price">€24 <span style="font-size:16px;color:var(--muted);font-family:var(--font-body);">/ mês</span></p>
+          <p class="plan-price">€25 <span style="font-size:16px;color:var(--muted);font-family:var(--font-body);">/ mês</span></p>
           <p class="plan-desc">Ideal para quem busca estilo e praticidade sem abrir mão de um tratamento diferenciado.</p>
           <a href="https://wa.me/351938435158?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20S%C3%A3o%20Francisco%20Club%20BLACK%20%2824%E2%82%AC%2Fm%C3%AAs%29." target="_blank" rel="noopener" class="plan-cta is-black">Quero garantir</a>
           <p class="plan-access">Você terá acesso a:</p>
@@ -406,7 +390,7 @@
             </a>
           </div>
           <p class="plan-name">São Francisco Club GOLD</p>
-          <p class="plan-price">€44 <span style="font-size:16px;color:var(--muted);font-family:var(--font-body);">/ mês</span></p>
+          <p class="plan-price">€46 <span style="font-size:16px;color:var(--muted);font-family:var(--font-body);">/ mês</span></p>
           <p class="plan-desc">A experiência definitiva para quem exige o máximo.</p>
           <a href="https://wa.me/351938435158?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20S%C3%A3o%20Francisco%20Club%20GOLD%20%2844%E2%82%AC%2Fm%C3%AAs%29." target="_blank" rel="noopener" class="plan-cta is-gold">Quero garantir</a>
           <p class="plan-access">Você terá acesso a:</p>
@@ -415,6 +399,42 @@
             <li>✓ Produtos premium</li>
             <li>✓ Experiência premium</li>
           </ul>
+        </div>
+
+        <p class="club-plans-note">O valor da assinatura inclui apenas o corte de cabelo. Serviços adicionais são cobrados à parte.</p>
+
+        <!-- Plano Diamond — ainda não disponível para contratação; apenas
+             um teaser "em breve", sem preço/benefícios inventados e sem
+             qualquer botão ou link de compra. -->
+        <div class="plan-card is-diamond" aria-label="Plano Diamond, em breve">
+          <span class="diamond-badge">Em breve</span>
+          <p class="plan-name is-diamond">São Francisco Club DIAMOND</p>
+          <p class="plan-desc">Para quem corta o cabelo com mais frequência. Detalhes e condições brevemente disponíveis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOCALIZAÇÃO ============ -->
+  <section id="local">
+    <div class="container">
+      <div class="local-layout">
+        <div>
+          <p class="local-heading">Faça-nos<br>uma <span class="accent">visita</span></p>
+          <p class="local-address">
+            <strong>Barbearia São Francisco — Gondomar</strong>
+            Tv. Monte Crasto 48, 8.º Cave<br>
+            4420-210 S. Cosme, Gondomar
+          </p>
+          <a class="btn btn-outline" href="https://maps.google.com/?q=Tv.+Monte+Crasto+48+8+Cave%2C+4420-210+S.+Cosme%2C+Portugal&amp;ftid=0xd246321564abb43%3A0x5b9ffc18044494fe" target="_blank" rel="noopener">Ver rotas no Google Maps</a>
+        </div>
+        <div class="map-embed">
+          <iframe
+            src="https://www.google.com/maps?q=Tv.+Monte+Crasto+48,+4420-210+S.+Cosme,+Portugal&output=embed"
+            width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa — Barbearia São Francisco, Gondomar">
+          </iframe>
         </div>
       </div>
     </div>
