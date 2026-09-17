@@ -232,7 +232,6 @@
       <p>Na Barbearia São Francisco, unimos a experiência e o estilo brasileiro à tradição portuguesa, criando uma experiência única de cuidado, qualidade e personalidade. Situada em Gondomar, a nossa casa nasceu da paixão pela barbearia e da vontade de trazer um pouco da essência brasileira para Portugal.</p>
       <p>Mais do que uma barbearia, somos um espaço onde o cuidado e a boa energia se encontram. Sempre com o compromisso de proporcionar uma experiência que faça cada cliente sentir-se em casa.</p>
       <p>São Francisco Barbearia — onde Brasil e Portugal se encontram em cada atendimento. 🇧🇷🇵🇹</p>
-      <p class="sobre-temp-note">Fundo desta secção reaproveita (bem escurecida) a foto de "Corte + Barba" — não é uma foto do espaço físico. Para usar uma foto real do interior da barbearia, troque o <code>background-image</code> em <code>.sobre-bg</code> (index.html) pelo caminho da nova foto.</p>
     </div>
   </section>
 
@@ -285,6 +284,25 @@
           </div>
           <p class="booking-warning" id="agendarWarning" role="alert"></p>
         </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROMOÇÕES ============
+       Fica depois de toda a área de agendamento. Na home mostramos
+       apenas os 3 primeiros cards (ver HOME_LIMIT em js/promos.js);
+       os 6 continuam disponíveis em promocoes.html.
+       ============================================================ -->
+  <section id="promocoes">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Todos os dias tem motivo</span>
+        <h2>Promoções da semana</h2>
+        <p>Uma vantagem diferente em cada dia — escolha o seu.</p>
+      </div>
+      <div class="promo-grid" id="promoGrid"></div>
+      <div class="promo-cta">
+        <a href="promocoes.html" class="btn btn-featured">Ver todas as promoções</a>
       </div>
     </div>
   </section>
@@ -474,5 +492,6 @@
 
 <script src="js/cart.js"></script>
 <script src="js/main.js"></script>
+<script src="js/promos.js"></script>
 </body>
 </html>

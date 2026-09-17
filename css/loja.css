@@ -1,0 +1,282 @@
+/* ============================================================
+   LOJA SÃO FRANCISCO — estilos específicos desta página
+   Reaproveita todas as variáveis e componentes de css/style.css
+   (cores, tipografia, botões, header, footer). Este ficheiro só
+   acrescenta o que é exclusivo da loja — nada aqui sobrescreve
+   ou altera o site principal.
+   ============================================================ */
+
+/* ---------- Shop hero ---------- */
+.shop-hero{
+  padding:150px 0 64px;
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(36,84,224,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 100%, rgba(179,18,28,0.10) 0%, transparent 55%),
+    var(--ink);
+}
+.shop-hero h1{
+  font-family:var(--font-display);text-transform:uppercase;
+  font-size:clamp(34px,6vw,64px);line-height:1.02;letter-spacing:0.01em;
+  max-width:820px;margin:14px 0 18px;
+}
+.shop-hero-sub{
+  font-size:17px;color:#D3CCC2;max-width:520px;
+}
+@media (max-width:640px){ .shop-hero{padding:130px 0 48px;} }
+
+/* ============================================================
+   DESTAQUE — MINOXIDIL KIRKLAND (novo)
+   Área premium isolada, fundo escuro com detalhes em azul e
+   dourado. Não altera nenhum estilo do grid de produtos abaixo.
+   ============================================================ */
+.minox-feature{padding:20px 0 56px;}
+.minox-card{
+  position:relative;overflow:hidden;
+  display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:0;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(36,84,224,0.16) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 100%, rgba(217,180,119,0.12) 0%, transparent 55%),
+    var(--surface);
+  border:1px solid rgba(217,180,119,0.35);
+  border-radius:var(--radius-md);
+  box-shadow:0 24px 60px rgba(0,0,0,0.45);
+}
+.minox-card::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  border-radius:inherit;padding:1px;
+  background:linear-gradient(135deg, rgba(217,180,119,0.7), rgba(36,84,224,0.4) 40%, transparent 70%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+}
+
+.minox-media{position:relative;background:#0a0a0b;border-right:1px solid var(--line);}
+.minox-badge{
+  position:absolute;top:18px;left:18px;z-index:2;
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;
+  color:#0B0B0C;background:linear-gradient(90deg,var(--brass),#F0DCA8);
+  padding:7px 12px;border-radius:999px;
+}
+.minox-badge svg{width:13px;height:13px;}
+.minox-photo-placeholder{
+  aspect-ratio:4/5;min-height:320px;
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;
+  background:
+    repeating-linear-gradient(-45deg, rgba(36,84,224,0.05) 0 20px, transparent 20px 40px),
+    #0a0a0b;
+  border:1.5px dashed rgba(217,180,119,0.4);margin:14px;border-radius:calc(var(--radius-md) - 6px);
+}
+.minox-photo-placeholder .ph-icon{width:44px;height:44px;margin:0 auto 12px;color:var(--brass);}
+.minox-photo-placeholder strong{display:block;font-size:13px;letter-spacing:0.04em;text-transform:uppercase;color:var(--paper);margin-bottom:4px;}
+.minox-photo-placeholder small{display:block;font-size:11.5px;color:var(--muted);}
+
+.minox-photo{
+  aspect-ratio:4/5;min-height:320px;margin:14px;border-radius:calc(var(--radius-md) - 6px);
+  background:linear-gradient(160deg,#F4F1EA 0%,#E7E2D6 100%);
+  display:flex;align-items:center;justify-content:center;padding:26px;
+  border:1px solid rgba(217,180,119,0.25);
+}
+.minox-photo img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 18px 28px rgba(0,0,0,0.35));}
+
+.minox-body{padding:32px 34px 30px;display:flex;flex-direction:column;}
+.minox-body .eyebrow{margin-bottom:10px;}
+.minox-body h2{
+  font-family:var(--font-display);text-transform:uppercase;
+  font-size:clamp(28px,3.4vw,38px);line-height:1.02;letter-spacing:0.01em;
+  margin-bottom:10px;
+  background:linear-gradient(90deg,var(--paper),var(--brass));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.minox-lead{font-size:15.5px;color:var(--brass);font-weight:700;margin-bottom:12px;}
+.minox-desc{font-size:14.5px;color:#D3CCC2;line-height:1.65;margin-bottom:22px;max-width:60ch;}
+
+.minox-about{margin-bottom:20px;}
+.minox-about h3{
+  font-size:12.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--paper);
+  margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--line);
+}
+.minox-about ul{display:grid;gap:8px;}
+.minox-about li{
+  position:relative;padding-left:20px;font-size:13.5px;color:#D3CCC2;line-height:1.5;
+}
+.minox-about li::before{
+  content:'';position:absolute;left:0;top:7px;width:8px;height:8px;border-radius:2px;
+  background:linear-gradient(135deg,var(--blue),var(--brass));
+}
+
+.minox-warning{
+  display:flex;gap:12px;align-items:flex-start;
+  background:rgba(36,84,224,0.08);border:1px solid rgba(36,84,224,0.3);
+  border-radius:8px;padding:14px 16px;margin-bottom:24px;
+}
+.minox-warning svg{width:20px;height:20px;flex:0 0 auto;color:var(--blue);margin-top:1px;}
+.minox-warning p{font-size:12.5px;color:#C9D2EE;line-height:1.6;}
+.minox-warning strong{color:var(--paper);}
+
+.minox-pricing{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px;
+}
+.minox-price-tier{
+  text-align:center;border:1px solid var(--line);border-radius:8px;padding:12px 8px;
+  background:var(--ink);
+}
+.minox-price-tier span{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.03em;margin-bottom:4px;}
+.minox-price-tier strong{font-family:var(--font-display);font-size:22px;color:var(--brass);font-weight:400;}
+.minox-price-tier strong em{font-family:var(--font-body);font-size:11px;color:var(--muted);font-style:normal;margin-left:2px;}
+.minox-price-tier:nth-child(3) strong{color:var(--blue);}
+
+.minox-footer{
+  display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;
+  margin-top:auto;padding-top:20px;border-top:1px solid var(--line);
+}
+.minox-tag{font-size:12px;letter-spacing:0.04em;color:var(--muted);text-transform:uppercase;margin-right:auto;}
+.minox-buy-btn{padding:15px 30px;}
+
+@media (max-width:900px){
+  .minox-card{grid-template-columns:1fr;}
+  .minox-media{border-right:none;border-bottom:1px solid var(--line);}
+}
+@media (max-width:640px){
+  .minox-body{padding:24px 20px 26px;}
+  .minox-photo-placeholder{min-height:240px;margin:12px;}
+  .minox-photo{min-height:220px;margin:12px;}
+  .minox-desc{font-size:13.5px;}
+  .minox-pricing{grid-template-columns:repeat(3,1fr);gap:6px;}
+  .minox-price-tier{padding:10px 4px;}
+  .minox-price-tier strong{font-size:18px;}
+  .minox-footer{flex-direction:column;align-items:stretch;}
+  .minox-tag{margin-right:0;text-align:center;}
+  .minox-buy-btn{width:100%;}
+}
+
+/* ---------- Product grid ---------- */
+.product-grid{
+  display:grid;gap:28px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+
+.product-card{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-md) var(--radius-md) 4px 4px;
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:border-color .2s,transform .2s var(--ease);
+}
+.product-card:hover{border-color:var(--brass);transform:translateY(-3px);}
+
+.product-photo{
+  position:relative;aspect-ratio:4/5;overflow:hidden;background:#0a0a0b;
+  border-bottom:1px solid var(--line);
+}
+.product-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease);}
+.product-card:hover .product-photo img{transform:scale(1.035);}
+
+.product-photo-placeholder{
+  position:relative;aspect-ratio:1/1;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  background:
+    repeating-linear-gradient(-45deg, rgba(255,255,255,0.035) 0 20px, transparent 20px 40px),
+    var(--surface-2, #1c1c1b);
+  border-bottom:1.5px dashed rgba(217,180,119,0.4);
+  padding:20px;
+}
+.product-photo-placeholder .ph-icon{
+  width:40px;height:40px;margin:0 auto 10px;color:var(--muted);
+}
+.product-photo-placeholder strong{
+  display:block;font-size:12px;letter-spacing:0.04em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:4px;
+}
+.product-photo-placeholder small{
+  display:block;font-size:11px;color:rgba(217,180,119,0.75);
+}
+
+.product-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1;}
+.product-body h3{
+  font-family:var(--font-display);font-size:22px;text-transform:uppercase;
+  line-height:1.05;letter-spacing:0.01em;margin-bottom:8px;
+}
+.product-desc-placeholder{
+  font-size:13.5px;color:var(--muted);font-style:italic;
+  border-left:2px solid var(--line);padding-left:10px;margin-bottom:18px;flex:1;
+}
+.product-desc{
+  font-size:13.5px;color:#D8D2C8;line-height:1.5;margin-bottom:18px;flex:1;
+}
+.product-footer{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  border-top:1px solid var(--line);padding-top:16px;
+}
+.product-price-placeholder{
+  font-family:var(--font-display);font-size:15px;letter-spacing:0.02em;
+  color:var(--brass);border:1px dashed rgba(217,180,119,0.5);
+  border-radius:6px;padding:6px 12px;white-space:nowrap;
+}
+.product-price{
+  font-family:var(--font-display);font-size:21px;letter-spacing:0.02em;
+  color:var(--brass);white-space:nowrap;
+}
+.product-price s{
+  color:var(--muted);font-size:15px;font-weight:400;margin-right:6px;
+  text-decoration-color:var(--muted);
+}
+.product-price .price-club{color:var(--blue);}
+.product-buy-btn{padding:11px 22px;font-size:12.5px;}
+
+.club-benefit-tag{
+  display:flex;align-items:flex-start;gap:10px;
+  background:rgba(217,180,119,0.08);border:1px solid rgba(217,180,119,0.35);
+  border-radius:8px;padding:10px 12px;margin-bottom:16px;
+}
+.club-benefit-tag svg{width:18px;height:18px;flex:0 0 auto;color:var(--brass);margin-top:1px;}
+.club-benefit-tag strong{
+  display:block;font-size:11.5px;text-transform:uppercase;letter-spacing:0.04em;
+  color:var(--brass);margin-bottom:2px;
+}
+.club-benefit-tag span{display:block;font-size:12.5px;color:#D8D2C8;}
+
+/* ---------- Shop note ---------- */
+.shop-note{padding-top:0;}
+.shop-note-box{
+  display:flex;gap:16px;align-items:flex-start;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
+  padding:22px 26px;max-width:760px;
+}
+.shop-note-box svg{width:26px;height:26px;flex:0 0 auto;color:var(--brass);margin-top:2px;}
+.shop-note-box strong{display:block;font-size:15px;margin-bottom:6px;}
+.shop-note-box p{font-size:13.5px;color:var(--muted);line-height:1.6;}
+
+/* ---------- Toast (feedback do botão Comprar) ---------- */
+.shop-toast{
+  position:fixed;left:50%;top:92px;transform:translateX(-50%) translateY(-16px);
+  background:var(--ink);border:1px solid var(--brass);color:var(--paper);
+  padding:14px 22px;border-radius:8px;font-size:13.5px;max-width:88vw;text-align:center;
+  box-shadow:0 12px 30px rgba(0,0,0,0.5);
+  opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease);
+  z-index:230;
+}
+.shop-toast.is-visible{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* ============================================================
+   OTIMIZAÇÃO MOBILE — loja
+   Regras isoladas em media query; não afetam o desktop.
+   ============================================================ */
+@media (max-width:767px){
+  .shop-hero{padding:110px 0 40px;}
+  .shop-hero h1{font-size:clamp(28px,7.5vw,40px);}
+  .shop-hero-sub{font-size:clamp(14px,3.8vw,16px);}
+  .product-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .product-body{padding:12px 12px 13px;}
+  .product-body h3{font-size:clamp(14px,4.2vw,16px);}
+  .product-desc-placeholder{font-size:clamp(10px,2.7vw,11px);margin-bottom:8px;}
+  .product-desc{font-size:clamp(10px,2.7vw,11px);margin-bottom:8px;}
+  .product-footer{padding-top:8px;flex-direction:column;align-items:flex-start;gap:8px;}
+  .product-price{font-size:clamp(15px,4.3vw,17px);}
+  .product-price s{font-size:clamp(11.5px,3.2vw,13px);}
+  .product-buy-btn{padding:9px 12px;font-size:clamp(10px,2.6vw,11px);width:100%;text-align:center;}
+  .club-benefit-tag{padding:8px 9px;margin-bottom:10px;gap:7px;}
+  .club-benefit-tag svg{width:14px;height:14px;}
+  .club-benefit-tag strong{font-size:clamp(9.5px,2.6vw,10px);}
+  .club-benefit-tag span{font-size:clamp(10.5px,2.8vw,11px);}
+  .shop-note-box{padding:18px 20px;}
+  .shop-note-box p{font-size:clamp(12.5px,3.3vw,13.5px);}
+}
