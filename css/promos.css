@@ -20,40 +20,49 @@
 .shop-hero-sub{font-size:17px;color:#D3CCC2;max-width:520px;}
 @media (max-width:640px){ .shop-hero{padding:130px 0 48px;} }
 
-/* ---------- lista de promoções ---------- */
-.promo-detail-list{display:flex;flex-direction:column;gap:28px;padding:48px 0;}
+/* ---------- lista de promoções ----------
+   Grade fixa de 2 colunas (2 imagens lado a lado, 3 linhas para as
+   6 promoções), tanto no desktop como no mobile — nunca 1 coluna.
+   Cada card passa a ter a imagem em cima e o texto por baixo (em vez
+   do layout anterior lado a lado), para caber bem numa coluna estreita
+   sem cortar nada. Nem as imagens nem o conteúdo das promoções mudam,
+   só a organização do layout. */
+.promo-detail-list{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:28px;padding:48px 0;
+}
 
 .promo-detail{
-  display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:0;
+  display:flex;flex-direction:column;
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
   overflow:hidden;scroll-margin-top:96px;
 }
-.promo-detail:nth-child(even){grid-template-columns:1fr minmax(0,340px);}
-.promo-detail:nth-child(even) .promo-detail-media{order:2;}
 
 .promo-detail-media{background:#0a0a0b;}
-.promo-detail-media img{width:100%;height:100%;object-fit:cover;display:block;min-height:280px;}
+/* aspect-ratio uniforme para as 6 promoções ficarem alinhadas na grade;
+   as fotos são todas em formato retrato (ver FULL_DIMS em js/promos.js),
+   3/4 é a proporção mais próxima do conjunto sem cortar de forma estranha. */
+.promo-detail-media img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;}
 
-.promo-detail-body{padding:36px 40px;display:flex;flex-direction:column;}
+.promo-detail-body{padding:22px 22px 26px;display:flex;flex-direction:column;flex:1 1 auto;}
 .promo-detail-day{
-  display:inline-block;font-size:12px;font-weight:700;letter-spacing:0.1em;
-  text-transform:uppercase;color:var(--brass);margin-bottom:10px;
+  display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--brass);margin-bottom:8px;
 }
 .promo-detail-body h2{
-  font-family:var(--font-display);font-size:clamp(28px,3.4vw,38px);
-  text-transform:uppercase;line-height:1.05;margin-bottom:10px;
+  font-family:var(--font-display);font-size:clamp(20px,2.6vw,26px);
+  text-transform:uppercase;line-height:1.08;margin-bottom:8px;
 }
-.promo-detail-tagline{font-size:15.5px;color:#D8D2C8;margin-bottom:20px;}
-.promo-detail-benefits{margin-bottom:26px;}
+.promo-detail-tagline{font-size:13.5px;color:#D8D2C8;margin-bottom:16px;}
+.promo-detail-benefits{margin-bottom:20px;}
 .promo-detail-benefits li{
-  position:relative;padding:10px 0 10px 26px;font-size:14.5px;font-weight:500;
+  position:relative;padding:8px 0 8px 24px;font-size:13px;font-weight:500;
   border-top:1px solid var(--line);
 }
 .promo-detail-benefits li:last-child{border-bottom:1px solid var(--line);}
 .promo-detail-benefits li::before{
-  content:'✓';position:absolute;left:0;top:10px;color:var(--blue);font-weight:700;
+  content:'✓';position:absolute;left:0;top:8px;color:var(--blue);font-weight:700;
 }
-.promo-detail-body .btn{align-self:flex-start;}
+.promo-detail-body .btn{align-self:flex-start;margin-top:auto;}
 /* Nesta página a validade fica solta sob o botão, sem a linha divisória
    que faz sentido dentro dos cards pequenos da home. */
 .promo-detail-body .promo-validity{
@@ -61,16 +70,20 @@
 }
 
 @media (max-width:860px){
-  .promo-detail, .promo-detail:nth-child(even){grid-template-columns:1fr;}
-  .promo-detail:nth-child(even) .promo-detail-media{order:0;}
-  .promo-detail-media img{min-height:0;aspect-ratio:4/3;}
-  .promo-detail-body{padding:26px 24px 30px;}
+  .promo-detail-list{gap:20px;}
 }
 @media (max-width:640px){
-  .promo-detail-list{gap:20px;padding:32px 0;}
-  .promo-detail-body{padding:22px 20px 26px;}
-  .promo-detail-body h2{font-size:clamp(24px,7vw,30px);}
-  .promo-detail-tagline{font-size:14px;margin-bottom:16px;}
-  .promo-detail-benefits li{font-size:13.5px;padding:8px 0 8px 24px;}
-  .promo-detail-body .btn{width:100%;text-align:center;}
+  .promo-detail-list{gap:12px;padding:32px 0;}
+  .promo-detail-body{padding:14px 14px 18px;}
+  .promo-detail-day{font-size:10px;margin-bottom:5px;}
+  .promo-detail-body h2{font-size:clamp(15px,4.6vw,18px);margin-bottom:5px;}
+  .promo-detail-tagline{font-size:11.5px;margin-bottom:10px;line-height:1.4;}
+  .promo-detail-benefits{margin-bottom:14px;}
+  .promo-detail-benefits li{font-size:11px;padding:6px 0 6px 20px;}
+  .promo-detail-body .btn{width:100%;text-align:center;font-size:12px;padding:12px 10px;}
+  .promo-validity{font-size:9px;}
+}
+@media (max-width:400px){
+  .promo-detail-list{gap:8px;}
+  .promo-detail-body{padding:10px 10px 14px;}
 }

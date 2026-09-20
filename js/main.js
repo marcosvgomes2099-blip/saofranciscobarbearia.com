@@ -223,17 +223,26 @@
 
   /* ============================================================
      SERVIÇOS — renderiza os cards reais em HTML/CSS
+     Na home mostramos só 4 (os mais representativos); a lista completa
+     continua disponível em "Marcar horário" (ver BOOKING_SERVICES) —
+     nada é removido, só a home fica mais objetiva.
      ============================================================ */
+  var HOMEPAGE_SERVICE_KEYS = ['Corte Degradê', 'Corte + Barba', 'Barba', 'Corte + Hidratação'];
   function renderServices() {
     var grid = document.getElementById('servicesGrid');
     if (!grid) return;
-    var html = FEATURED_SERVICES.map(function (s) {
+    var homepageServices = HOMEPAGE_SERVICE_KEYS
+      .map(function (key) {
+        return FEATURED_SERVICES.filter(function (s) { return s.key === key; })[0];
+      })
+      .filter(Boolean);
+    var html = homepageServices.map(function (s) {
       var checklist = s.checklist.map(function (item) {
         return '<li>' + item + '</li>';
       }).join('');
       return (
         '<a class="service-card" href="#agendar" data-service-key="' + s.key + '" aria-label="Marcar: ' + s.title + '">' +
-          '<div class="service-photo"><img src="' + s.photo + '" alt="' + s.title + '" loading="lazy" width="600" height="800"></div>' +
+          '<div class="service-photo"><img src="' + s.photo + '" alt="' + s.title + ' — São Francisco Barbearia" loading="lazy" width="600" height="800"></div>' +
           '<div class="service-body">' +
             '<div class="service-top">' +
               '<h3>' + s.title + '</h3>' +
@@ -262,7 +271,7 @@
       return (
         '<a class="team-member" href="#agendar" aria-label="Marcar com ' + m.name + '">' +
           '<div class="team-photo">' +
-            '<img src="' + m.photo + '" alt="' + m.name + '" loading="lazy" width="480" height="600">' +
+            '<img src="' + m.photo + '" alt="' + m.name + ', barbeiro da São Francisco Barbearia" loading="lazy" width="480" height="600">' +
             '<span class="team-photo-scrim"></span>' +
             '<span class="team-photo-caption"><strong>' + m.name + '</strong><em>Barbeiro</em></span>' +
           '</div>' +
@@ -519,26 +528,37 @@
     }
   }
 
+  /* A intro cinematográfica só deve aparecer na primeira visita — depois
+     de o visitante clicar em "Clique para entrar" uma vez, guardamos
+     sf_intro_seen no localStorage e todas as visitas seguintes (recarregar,
+     voltar à home, navegar entre secções, voltar pelo navegador) entram
+     direto no site, sem passar pela intro outra vez. Se o localStorage não
+     estiver disponível (ex.: navegação privada em alguns browsers), a
+     intro simplesmente volta a aparecer sempre — comportamento anterior,
+     sem quebrar nada. */
+  var INTRO_SEEN_KEY = 'sf_intro_seen';
+  function hasSeenIntro() {
+    try {
+      return window.localStorage.getItem(INTRO_SEEN_KEY) === 'true';
+    } catch (e) {
+      return false;
+    }
+  }
+  function markIntroSeen() {
+    try {
+      window.localStorage.setItem(INTRO_SEEN_KEY, 'true');
+    } catch (e) { /* localStorage indisponível: sem problema, seguimos sem gravar */ }
+  }
+
   function initEntrySplash() {
     var splash = document.getElementById('entrySplash');
     var btn = document.getElementById('entryBtn');
     if (!splash || !btn) return;
-    document.body.classList.add('entry-locked');
-    function enter() {
-      splash.classList.add('is-hidden');
-      document.body.classList.remove('entry-locked');
-      window.setTimeout(function () {
-        splash.style.display = 'none';
-      }, 650);
-      btn.removeEventListener('click', enter);
+
+    function proceed(withHashScroll) {
       startHeroVideo();
       if (window.sfInitCal) window.sfInitCal();
-
-      /* Se o visitante chegou por um link com âncora (ex.: vindo de
-         promocoes.html para #agendar), o browser não conseguiu rolar
-         porque o scroll estava bloqueado pela tela de entrada.
-         Levamo-lo até lá assim que entra. */
-      if (window.location.hash) {
+      if (withHashScroll && window.location.hash) {
         var target = document.querySelector(window.location.hash);
         if (target) {
           window.setTimeout(function () {
@@ -547,7 +567,73 @@
         }
       }
     }
+
+    /* Já viu a intro antes: entra direto no site normal, sem animação,
+       sem bloquear o scroll e sem mostrar a tela de entrada. */
+    if (hasSeenIntro()) {
+      splash.style.display = 'none';
+      proceed(true);
+      return;
+    }
+
+    document.body.classList.add('entry-locked');
+    function enter() {
+      markIntroSeen();
+      splash.classList.add('is-hidden');
+      document.body.classList.remove('entry-locked');
+      window.setTimeout(function () {
+        splash.style.display = 'none';
+      }, 650);
+      btn.removeEventListener('click', enter);
+      proceed(true);
+    }
     btn.addEventListener('click', enter);
+  }
+
+  /* ============================================================
+     CLUBE — sequência de entrada (título, frase, cards, botão)
+     ao entrar no viewport, uma única vez. Mesma abordagem já usada
+     na secção de Avaliações (ver js/reviews.js).
+     ============================================================ */
+  function initClubReveal() {
+    var section = document.getElementById('clube');
+    if (!section) return;
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            section.classList.add('is-visible');
+            observer.unobserve(section);
+          }
+        });
+      }, { threshold: 0.2 });
+      observer.observe(section);
+    } else {
+      section.classList.add('is-visible');
+    }
+  }
+
+  /* ============================================================
+     PRODUTOS CTA — sequência de entrada (título, frase, botão)
+     ao entrar no viewport, uma única vez. Mesma abordagem já usada
+     nas secções de Avaliações e Clube.
+     ============================================================ */
+  function initProdutosCtaReveal() {
+    var section = document.querySelector('.produtos-cta');
+    if (!section) return;
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            section.classList.add('is-visible');
+            observer.unobserve(section);
+          }
+        });
+      }, { threshold: 0.3 });
+      observer.observe(section);
+    } else {
+      section.classList.add('is-visible');
+    }
   }
 
   /* ---------- init ---------- */
@@ -558,6 +644,8 @@
   renderBarberPicker();
   initBookingLogic();
   initClubToggle();
+  initClubReveal();
+  initProdutosCtaReveal();
   initNewsletter();
   initMascotBlink();
 })();

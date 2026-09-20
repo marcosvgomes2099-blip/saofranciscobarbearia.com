@@ -32,10 +32,12 @@
     radial-gradient(ellipse 60% 50% at 88% 100%,rgba(179,18,28,0.07) 0%,transparent 60%);
 }
 .clube-page-plans{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
-  max-width:1080px;margin:0 auto;align-items:start;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:24px;
+  max-width:760px;margin:0 auto;align-items:stretch;
 }
-.clube-page-plans .plan-card.is-diamond{margin-top:0;align-self:stretch;display:flex;flex-direction:column;justify-content:center;}
+.clube-page-plans .plan-card{display:flex;flex-direction:column;}
+.clube-page-plans .plan-access{margin-top:auto;}
+.club-compare{margin:36px auto 0;max-width:760px;overflow-x:auto;}
 .clube-page-note{max-width:640px;margin-left:auto;margin-right:auto;}
 
 /* ---------- informações importantes ---------- */
@@ -52,6 +54,10 @@
 
 @media (max-width:900px){
   .clube-page-plans{grid-template-columns:1fr;max-width:420px;}
+}
+@media (max-width:640px){
+  .club-compare-table th,.club-compare-table td{padding:10px 8px;font-size:12px;}
+  .club-compare-table thead th{font-size:11px;}
 }
 @media (max-width:640px){
   .clube-info-cta{flex-direction:column;}

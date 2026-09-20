@@ -4,34 +4,78 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>São Francisco Barbearia | Barbearia em Gondomar</title>
-<meta name="description" content="Barbearia São Francisco, em S. Cosme, Gondomar. Cortes, barba, tratamentos e o São Francisco Club. Marca já o teu horário.">
+<meta name="description" content="Barbearia São Francisco, em São Cosme, Gondomar (Porto). Cortes masculinos, fade, barba e cuidados masculinos. Marca já o teu horário.">
+<meta name="keywords" content="barbearia em Gondomar, barbearia em São Cosme, barbeiro em Gondomar, corte masculino em Gondomar, fade em Gondomar, barba em Gondomar">
+<link rel="canonical" href="https://saofranciscobarbearia.com/">
 <meta name="theme-color" content="#0B0B0C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23000000'/%3E%3Ctext x='50' y='68' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='52' fill='%23EDEBEB' text-anchor='middle'%3ESF%3C/text%3E%3C/svg%3E">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_PT">
+<meta property="og:site_name" content="São Francisco Barbearia">
+<meta property="og:url" content="https://saofranciscobarbearia.com/">
 <meta property="og:title" content="São Francisco Barbearia | Gondomar">
 <meta property="og:description" content="Tradição e modernidade num só lugar. Cortes, barba, tratamentos e o São Francisco Club. Marca já o teu horário.">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://saofranciscobarbearia.com/assets/images/destaque-1.webp">
+<meta property="og:image:width" content="900">
+<meta property="og:image:height" content="1150">
+<meta property="og:image:alt" content="Barbeiro da São Francisco sorrindo com cliente sendo atendido">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="São Francisco Barbearia | Gondomar">
+<meta name="twitter:description" content="Tradição e modernidade num só lugar. Cortes, barba, tratamentos e o São Francisco Club. Marca já o teu horário.">
+<meta name="twitter:image" content="https://saofranciscobarbearia.com/assets/images/destaque-1.webp">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Ops+One&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/reviews.css">
 <link rel="stylesheet" href="css/cart.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Barbershop",
+  "@id": "https://saofranciscobarbearia.com/#negocio",
+  "name": "São Francisco Barbearia",
+  "url": "https://saofranciscobarbearia.com/",
+  "image": "https://saofranciscobarbearia.com/assets/images/destaque-1.webp",
+  "logo": "https://saofranciscobarbearia.com/assets/images/footer-logo.webp",
+  "telephone": "+351938435158",
+  "description": "Barbearia em Gondomar (São Cosme), especializada em cortes masculinos, fade, barba e cuidados masculinos.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Travessa Monte Crasto 48, 8.º Cave",
+    "addressLocality": "São Cosme, Gondomar",
+    "addressRegion": "Porto",
+    "postalCode": "4420-210",
+    "addressCountry": "PT"
+  },
+  "areaServed": ["Gondomar", "São Cosme", "Porto"],
+  "sameAs": ["https://www.instagram.com/saofrancisco.pt/"]
+}
+</script>
 </head>
 <body>
 <a href="#main" class="skip-link">Saltar para o conteúdo</a>
 
-<!-- ============ ENTRY SPLASH ============ -->
+<!-- ============ ENTRY SPLASH ============
+     Abertura cinematográfica: só aparece na primeira visita (ver
+     sf_intro_seen em localStorage, controlado por initEntrySplash em
+     js/main.js). Sequência: fundo em degradê lento → logo → Gondomar →
+     frase de destaque → botão. ============================================================ -->
 <div class="entry-splash" id="entrySplash">
+  <div class="entry-splash-bg" aria-hidden="true"></div>
   <div class="entry-splash-content">
+    <p class="entry-splash-logo">
+      <span class="entry-splash-logo-line1">São Francisco</span>
+      <span class="entry-splash-logo-line2">Barbearia</span>
+    </p>
     <p class="entry-splash-eyebrow">Gondomar</p>
-    <p class="entry-splash-logo">SÃO FRANCISCO</p>
-    <p class="entry-splash-tagline">Tradição e modernidade em cada corte.</p>
+    <p class="entry-splash-tagline">A experiência que você merece.</p>
     <button type="button" id="entryBtn" class="entry-splash-btn">
       <span class="entry-pulse-dot" aria-hidden="true"></span>
-      Clica para entrar
+      Clique para entrar
+      <span class="entry-splash-btn-arrow" aria-hidden="true">→</span>
     </button>
   </div>
 </div>
@@ -219,6 +263,10 @@
       <div class="services-grid" id="servicesGrid">
         <!-- cards inseridos via JS a partir de um único array de dados (ver js/main.js) -->
       </div>
+
+      <div class="services-more-cta">
+        <a href="#agendar" class="btn btn-outline is-services-more" id="servicesMoreBtn">Ver mais serviços<span class="arrow" aria-hidden="true">→</span></a>
+      </div>
     </div>
   </section>
 
@@ -318,6 +366,49 @@
     </div>
   </section>
 
+  <!-- ============ AVALIAÇÕES GOOGLE ============
+       Nota de conteúdo (2026-09-20): a nota (5.0), o total de avaliações
+       (33) e as 5 avaliações do carrossel são reais, fornecidas pelo
+       cliente a partir da própria ficha do Google — ver js/reviews.js.
+       Não inventar nem arredondar estes números ao editar no futuro.
+       ============================================================ -->
+  <section id="avaliacoes" aria-label="Avaliações no Google">
+    <div class="container">
+      <div class="reviews-head">
+        <div class="reviews-rating">
+          <svg class="reviews-google-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#4285F4" d="M23.52 12.27c0-.85-.08-1.67-.22-2.45H12v4.64h6.47a5.54 5.54 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.57-5.17 3.57-8.82Z"/>
+            <path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.95-2.9l-3.88-3.02c-1.08.72-2.46 1.15-4.07 1.15-3.13 0-5.78-2.11-6.73-4.96H1.26v3.11A12 12 0 0 0 12 24Z"/>
+            <path fill="#FBBC05" d="M5.27 14.27a7.2 7.2 0 0 1 0-4.54v-3.1H1.26a12 12 0 0 0 0 10.75l4.01-3.11Z"/>
+            <path fill="#EA4335" d="M12 4.75c1.76 0 3.34.6 4.58 1.79l3.44-3.44C17.95 1.19 15.24 0 12 0A12 12 0 0 0 1.26 6.63l4.01 3.1C6.22 6.86 8.87 4.75 12 4.75Z"/>
+          </svg>
+          <span class="reviews-score">5.0</span>
+          <span class="reviews-stars" aria-label="5 de 5 estrelas"><span class="reviews-star" aria-hidden="true">★</span><span class="reviews-star" aria-hidden="true">★</span><span class="reviews-star" aria-hidden="true">★</span><span class="reviews-star" aria-hidden="true">★</span><span class="reviews-star" aria-hidden="true">★</span></span>
+        </div>
+        <p class="reviews-on-google">no Google</p>
+        <p class="reviews-tagline">A experiência dos nossos clientes fala por nós.</p>
+        <p class="reviews-count">+33 avaliações reais</p>
+      </div>
+
+      <div class="reviews-carousel" id="reviewsCarousel">
+        <button type="button" class="reviews-arrow is-prev" id="reviewsPrev" aria-label="Avaliação anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+        <div class="reviews-track-wrap">
+          <div class="reviews-track" id="reviewsTrack"></div>
+        </div>
+        <button type="button" class="reviews-arrow is-next" id="reviewsNext" aria-label="Próxima avaliação">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <div class="reviews-dots" id="reviewsDots"></div>
+
+      <div class="reviews-cta">
+        <a href="https://maps.google.com/?q=Tv.+Monte+Crasto+48+8+Cave%2C+4420-210+S.+Cosme%2C+Portugal&ftid=0xd246321564abb43%3A0x5b9ffc18044494fe" target="_blank" rel="noopener" class="btn btn-outline is-google">Ver todas as avaliações no Google →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ CLUBE ============
        Fica agora entre Produtos e Localização. Upgrade visual (glow,
        gradientes, sombras) é só CSS — ver bloco "CLUBE" em css/style.css.
@@ -356,61 +447,63 @@
       </div>
 
       <div class="club-plans">
-        <p class="text-center" style="color:var(--muted);margin:36px 0 8px;">Escolha o plano que combina com o seu ritmo e ganhe benefícios únicos.</p>
-        <div class="plan-toggle">
-          <span id="labelBlack" class="plan-label is-active">Black</span>
-          <button id="planSwitch" class="switch-track" type="button" aria-label="Alternar entre plano Black e Gold">
-            <span id="switchKnob" class="switch-knob"></span>
-          </button>
-          <span id="labelGold" class="plan-label">Gold</span>
+        <p class="text-center" style="color:var(--muted);margin:36px 0 8px;">Os dois planos do São Francisco Club, lado a lado.</p>
+
+        <div class="club-plans-grid">
+          <div id="cardBlack" class="plan-card">
+            <div class="plan-ticket-wrap is-black">
+              <a href="https://wa.me/351938435158?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20S%C3%A3o%20Francisco%20Club%20BLACK%20%2825%E2%82%AC%2Fm%C3%AAs%29." target="_blank" rel="noopener">
+                <img src="assets/images/club-black.webp" alt="Cartão São Francisco Club Black" loading="lazy">
+              </a>
+            </div>
+            <p class="plan-name">São Francisco Club BLACK</p>
+            <p class="plan-price">€25 <span style="font-size:16px;color:var(--muted);font-family:var(--font-body);">/ mês</span></p>
+            <p class="plan-desc">Ideal para quem busca estilo e praticidade sem abrir mão de um tratamento diferenciado.</p>
+            <a href="https://wa.me/351938435158?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20S%C3%A3o%20Francisco%20Club%20BLACK%20%2825%E2%82%AC%2Fm%C3%AAs%29." target="_blank" rel="noopener" class="plan-cta is-black">Aderir ao Black</a>
+            <p class="plan-access">Você terá acesso a:</p>
+            <ul class="plan-list">
+              <li>✓ 2 cortes por mês</li>
+              <li>✓ Produtos premium</li>
+              <li>✓ Benefícios exclusivos</li>
+            </ul>
+          </div>
+
+          <div id="cardGold" class="plan-card">
+            <div class="plan-ticket-wrap is-gold">
+              <a href="https://wa.me/351938435158?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20S%C3%A3o%20Francisco%20Club%20GOLD%20%2846%E2%82%AC%2Fm%C3%AAs%29." target="_blank" rel="noopener">
+                <img src="assets/images/club-gold.webp" alt="Cartão São Francisco Club Gold" loading="lazy">
+              </a>
+            </div>
+            <p class="plan-name">São Francisco Club GOLD</p>
+            <p class="plan-price">€46 <span style="font-size:16px;color:var(--muted);font-family:var(--font-body);">/ mês</span></p>
+            <p class="plan-desc">A experiência definitiva para quem exige o máximo.</p>
+            <a href="https://wa.me/351938435158?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20S%C3%A3o%20Francisco%20Club%20GOLD%20%2846%E2%82%AC%2Fm%C3%AAs%29." target="_blank" rel="noopener" class="plan-cta is-gold">Aderir ao Gold</a>
+            <p class="plan-access">Você terá acesso a:</p>
+            <ul class="plan-list">
+              <li>✓ 4 cortes por mês</li>
+              <li>✓ Produtos premium</li>
+              <li>✓ Benefícios exclusivos</li>
+            </ul>
+          </div>
         </div>
 
-        <div id="cardBlack" class="plan-card">
-          <div class="plan-ticket-wrap is-black">
-            <a href="https://wa.me/351938435158?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20S%C3%A3o%20Francisco%20Club%20BLACK%20%2824%E2%82%AC%2Fm%C3%AAs%29." target="_blank" rel="noopener">
-              <img src="assets/images/club-black.webp" alt="Cartão São Francisco Club Black" loading="lazy">
-            </a>
-          </div>
-          <p class="plan-name">São Francisco Club BLACK</p>
-          <p class="plan-price">€25 <span style="font-size:16px;color:var(--muted);font-family:var(--font-body);">/ mês</span></p>
-          <p class="plan-desc">Ideal para quem busca estilo e praticidade sem abrir mão de um tratamento diferenciado.</p>
-          <a href="https://wa.me/351938435158?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20S%C3%A3o%20Francisco%20Club%20BLACK%20%2824%E2%82%AC%2Fm%C3%AAs%29." target="_blank" rel="noopener" class="plan-cta is-black">Quero garantir</a>
-          <p class="plan-access">Você terá acesso a:</p>
-          <ul class="plan-list">
-            <li>✓ 02 cortes mensais</li>
-            <li>✓ Produtos premium</li>
-            <li>✓ Experiência premium</li>
-          </ul>
-        </div>
-
-        <div id="cardGold" class="plan-card" style="display:none;">
-          <div class="plan-ticket-wrap is-gold">
-            <a href="https://wa.me/351938435158?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20S%C3%A3o%20Francisco%20Club%20GOLD%20%2844%E2%82%AC%2Fm%C3%AAs%29." target="_blank" rel="noopener">
-              <img src="assets/images/club-gold.webp" alt="Cartão São Francisco Club Gold" loading="lazy">
-            </a>
-          </div>
-          <p class="plan-name">São Francisco Club GOLD</p>
-          <p class="plan-price">€46 <span style="font-size:16px;color:var(--muted);font-family:var(--font-body);">/ mês</span></p>
-          <p class="plan-desc">A experiência definitiva para quem exige o máximo.</p>
-          <a href="https://wa.me/351938435158?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20S%C3%A3o%20Francisco%20Club%20GOLD%20%2844%E2%82%AC%2Fm%C3%AAs%29." target="_blank" rel="noopener" class="plan-cta is-gold">Quero garantir</a>
-          <p class="plan-access">Você terá acesso a:</p>
-          <ul class="plan-list">
-            <li>✓ 04 cortes mensais</li>
-            <li>✓ Produtos premium</li>
-            <li>✓ Experiência premium</li>
-          </ul>
+        <!-- Comparação simples entre os dois planos — mesmos dados dos
+             cards acima, sem inventar nenhum benefício adicional. -->
+        <div class="club-compare">
+          <table class="club-compare-table">
+            <thead>
+              <tr><th scope="col">Benefício</th><th scope="col">Black</th><th scope="col">Gold</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Cortes por mês</th><td>2</td><td>4</td></tr>
+              <tr><th scope="row">Produtos premium</th><td>✓</td><td>✓</td></tr>
+              <tr><th scope="row">Benefícios exclusivos</th><td>✓</td><td>✓</td></tr>
+              <tr><th scope="row">Preço mensal</th><td>25€</td><td>46€</td></tr>
+            </tbody>
+          </table>
         </div>
 
         <p class="club-plans-note">O valor da assinatura inclui apenas o corte de cabelo. Serviços adicionais são cobrados à parte.</p>
-
-        <!-- Plano Diamond — ainda não disponível para contratação; apenas
-             um teaser "em breve", sem preço/benefícios inventados e sem
-             qualquer botão ou link de compra. -->
-        <div class="plan-card is-diamond" aria-label="Plano Diamond, em breve">
-          <span class="diamond-badge">Em breve</span>
-          <p class="plan-name is-diamond">São Francisco Club DIAMOND</p>
-          <p class="plan-desc">Para quem corta o cabelo com mais frequência. Detalhes e condições brevemente disponíveis.</p>
-        </div>
       </div>
     </div>
   </section>
@@ -446,7 +539,7 @@
 <footer class="site-footer">
   <div class="container">
     <div class="footer-top">
-      <img src="assets/images/footer-logo.webp" alt="São Francisco Barbearia" class="footer-logo">
+      <img src="assets/images/footer-logo.webp" alt="São Francisco Barbearia" class="footer-logo" width="175" height="245" loading="lazy">
       <p class="footer-tagline">💈 SEU ESTILO, NOSSA MARCA REGISTRADA.</p>
       <div class="footer-links">
         <a href="#sobre" class="footer-btn is-brass">
@@ -513,5 +606,6 @@
 <script src="js/cart.js"></script>
 <script src="js/main.js"></script>
 <script src="js/promos.js"></script>
+<script src="js/reviews.js"></script>
 </body>
 </html>
