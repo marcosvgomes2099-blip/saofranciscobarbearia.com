@@ -1,0 +1,154 @@
+/* ============================================================
+   AVALIAÇÕES GOOGLE — secção da home (entre Produtos e Clube)
+   Reaproveita as variáveis de css/style.css (--ink, --surface, --line,
+   --brass, --blue, --red, --paper, --muted, --radius-md, --ease).
+   Tudo aqui é CSS puro — sem bibliotecas — para não pesar o site.
+   ============================================================ */
+
+#avaliacoes{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(ellipse 55% 45% at 50% 0%, rgba(217,180,119,0.07) 0%, transparent 60%),
+    var(--ink);
+}
+
+.reviews-head{max-width:640px;margin:0 auto 56px;text-align:center;}
+
+.reviews-rating{
+  display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:6px;
+  opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease);
+}
+#avaliacoes.is-visible .reviews-rating{opacity:1;transform:translateY(0);}
+.reviews-google-icon{width:30px;height:30px;flex-shrink:0;}
+.reviews-score{
+  font-family:var(--font-display);font-size:clamp(48px,7vw,72px);line-height:1;
+  letter-spacing:0.01em;color:var(--paper);
+}
+.reviews-stars{
+  font-size:clamp(20px,3vw,28px);color:var(--brass);letter-spacing:2px;
+  display:inline-flex;
+}
+/* cada estrela aparece isoladamente (fade-in + leve escala + brilho breve),
+   da esquerda para a direita, uma vez, quando a secção entra no viewport;
+   5 estrelas x 0.35s de intervalo + 0.5s de animação = ~2.2s no total. */
+.reviews-star{display:inline-block;opacity:0;transform:scale(.4);}
+#avaliacoes.is-visible .reviews-star{animation:reviewsStarPop .5s var(--ease) forwards;}
+#avaliacoes.is-visible .reviews-star:nth-child(1){animation-delay:.3s;}
+#avaliacoes.is-visible .reviews-star:nth-child(2){animation-delay:.65s;}
+#avaliacoes.is-visible .reviews-star:nth-child(3){animation-delay:1s;}
+#avaliacoes.is-visible .reviews-star:nth-child(4){animation-delay:1.35s;}
+#avaliacoes.is-visible .reviews-star:nth-child(5){animation-delay:1.7s;}
+@keyframes reviewsStarPop{
+  0%{opacity:0;transform:scale(.4);text-shadow:0 0 0 rgba(217,180,119,0);}
+  55%{opacity:1;transform:scale(1.18);text-shadow:0 0 14px rgba(217,180,119,0.65);}
+  100%{opacity:1;transform:scale(1);text-shadow:0 0 0 rgba(217,180,119,0);}
+}
+
+.reviews-on-google{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:18px;}
+.reviews-tagline{
+  font-family:var(--font-display);text-transform:uppercase;
+  font-size:clamp(20px,3vw,28px);line-height:1.15;color:var(--paper);margin-bottom:12px;
+}
+.reviews-count{font-size:15px;color:var(--muted);}
+
+/* ---------- carrossel ---------- */
+.reviews-carousel{
+  display:flex;align-items:center;gap:16px;max-width:1180px;margin:0 auto;
+  opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease) .15s,transform .7s var(--ease) .15s;
+}
+#avaliacoes.is-visible .reviews-carousel{opacity:1;transform:translateY(0);}
+
+.reviews-track-wrap{flex:1 1 auto;overflow:hidden;}
+.reviews-track{display:flex;gap:24px;transition:transform .5s var(--ease);will-change:transform;}
+
+.review-card{
+  flex:0 0 calc(33.333% - 16px);
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);
+  padding:28px 26px;display:flex;flex-direction:column;
+  box-shadow:0 18px 40px -26px rgba(0,0,0,0.6);
+  transition:transform .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease);
+}
+.review-card:hover{
+  transform:translateY(-4px);border-color:rgba(217,180,119,0.3);
+  box-shadow:0 24px 50px -24px rgba(0,0,0,0.65);
+}
+.review-card-top{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.review-avatar{
+  width:42px;height:42px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--blue),var(--red));
+  color:#fff;font-weight:700;font-size:14px;letter-spacing:0.02em;
+}
+.review-name{font-size:14.5px;font-weight:700;color:var(--paper);margin-bottom:2px;}
+.review-stars{font-size:12px;color:var(--brass);letter-spacing:1px;}
+.review-text{
+  font-size:14.5px;line-height:1.65;color:#D8D2C8;flex:1 1 auto;margin-bottom:18px;
+}
+.review-source{
+  display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;
+  color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;
+}
+.review-source svg{width:14px;height:14px;}
+
+/* ---------- setas ---------- */
+.reviews-arrow{
+  flex-shrink:0;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--paper);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:border-color .2s,background .2s,transform .2s;
+}
+.reviews-arrow svg{width:18px;height:18px;}
+.reviews-arrow:hover{border-color:var(--brass);background:var(--surface-2);transform:scale(1.06);}
+
+/* ---------- indicadores ---------- */
+.reviews-dots{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:26px;}
+.review-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--line);border:none;padding:0;cursor:pointer;
+  transition:background .25s,transform .25s;
+}
+.review-dot.is-active{background:var(--brass);transform:scale(1.3);}
+
+/* ---------- cta ---------- */
+.reviews-cta{text-align:center;margin-top:40px;}
+.btn-outline.is-google{
+  border-color:rgba(217,180,119,0.5);
+  transition:border-color .25s var(--ease),transform .2s var(--ease),box-shadow .25s var(--ease);
+}
+.btn-outline.is-google:hover{border-color:var(--brass);transform:translateY(-2px);box-shadow:0 0 24px rgba(217,180,119,0.16);}
+
+@media (prefers-reduced-motion:reduce){
+  .reviews-rating,.reviews-stars,.reviews-carousel{transition:none;opacity:1;transform:none;}
+  .reviews-star{animation:none !important;opacity:1;transform:none;}
+}
+
+/* ---------- tablet ---------- */
+@media (max-width:980px) and (min-width:641px){
+  .review-card{flex:0 0 calc(50% - 12px);}
+}
+
+/* ---------- mobile ---------- */
+@media (max-width:767px){
+  /* animação das estrelas mais compacta no telemóvel: intervalo e
+     duração menores, mas ainda perceptíveis */
+  #avaliacoes.is-visible .reviews-star{animation-duration:.35s;}
+  #avaliacoes.is-visible .reviews-star:nth-child(1){animation-delay:.2s;}
+  #avaliacoes.is-visible .reviews-star:nth-child(2){animation-delay:.42s;}
+  #avaliacoes.is-visible .reviews-star:nth-child(3){animation-delay:.64s;}
+  #avaliacoes.is-visible .reviews-star:nth-child(4){animation-delay:.86s;}
+  #avaliacoes.is-visible .reviews-star:nth-child(5){animation-delay:1.08s;}
+  .reviews-head{margin-bottom:36px;}
+  .reviews-rating{gap:10px;margin-bottom:4px;}
+  .reviews-google-icon{width:24px;height:24px;}
+  .reviews-on-google{margin-bottom:12px;}
+  .reviews-tagline{font-size:clamp(17px,4.6vw,20px);margin-bottom:8px;}
+  .reviews-count{font-size:13.5px;}
+  .reviews-carousel{gap:8px;}
+  .reviews-arrow{width:36px;height:36px;}
+  .reviews-arrow svg{width:15px;height:15px;}
+  .review-card{padding:20px 18px;}
+  .review-text{font-size:13.5px;}
+  .reviews-cta{margin-top:28px;}
+  .reviews-cta .btn{width:100%;text-align:center;}
+}
+@media (max-width:640px){
+  .review-card{flex:0 0 100%;}
+}

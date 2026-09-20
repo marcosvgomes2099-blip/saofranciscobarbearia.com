@@ -1,0 +1,108 @@
+/* ============================================================
+   CARRINHO — ícone no header + painel lateral (novo componente)
+   Este ficheiro só contém seletores novos (.cart-*, #cart*).
+   Não sobrescreve nem modifica nenhuma regra existente do site,
+   pelo que não altera o desktop já aprovado — apenas acrescenta
+   o necessário para o carrinho, conforme pedido. Funciona em
+   mobile e desktop.
+   ============================================================ */
+
+/* ---------- ícone no header ---------- */
+.cart-toggle{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;background:none;border:none;cursor:pointer;color:var(--paper);
+  flex:0 0 auto;
+}
+.cart-toggle svg{width:22px;height:22px;}
+.cart-count{
+  position:absolute;top:0;right:-2px;min-width:17px;height:17px;padding:0 4px;
+  border-radius:999px;background:var(--red);color:#fff;font-size:10.5px;font-weight:700;
+  display:none;align-items:center;justify-content:center;line-height:1;
+  font-family:var(--font-body);
+}
+
+/* ---------- overlay + painel ---------- */
+.cart-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:200;
+  opacity:0;pointer-events:none;transition:opacity .25s var(--ease);
+}
+.cart-overlay.is-open{opacity:1;pointer-events:auto;}
+
+.cart-drawer{
+  position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);
+  background:var(--surface);border-left:1px solid var(--line);color:var(--paper);
+  z-index:201;display:flex;flex-direction:column;
+  transform:translateX(100%);transition:transform .3s var(--ease);
+  padding:22px;overflow-y:auto;
+}
+.cart-drawer.is-open{transform:translateX(0);}
+body.cart-locked{overflow:hidden;}
+
+.cart-drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex:0 0 auto;}
+.cart-drawer-head h2{font-family:var(--font-display);font-size:24px;text-transform:uppercase;}
+.cart-close{
+  background:none;border:none;color:var(--paper);font-size:28px;line-height:1;
+  cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+}
+
+.cart-member-toggle{
+  display:flex;align-items:flex-start;gap:10px;background:var(--surface-2);
+  border:1px solid var(--line);border-radius:8px;padding:13px 14px;margin-bottom:18px;
+  cursor:pointer;font-size:13px;color:#D8D2C8;flex:0 0 auto;
+}
+.cart-member-toggle input{margin-top:2px;flex:0 0 auto;width:18px;height:18px;accent-color:var(--blue);}
+.cart-member-toggle strong{color:var(--paper);}
+.cart-member-toggle em{display:block;color:var(--muted);font-style:normal;font-size:11.5px;margin-top:3px;}
+
+.cart-member-code{
+  display:none;margin:-8px 0 18px;padding:12px 14px;
+  background:var(--surface-2);border:1px solid var(--line);border-radius:8px;
+}
+.cart-member-code label{display:block;font-size:11.5px;color:var(--muted);margin-bottom:6px;}
+.cart-member-code input{
+  width:100%;padding:9px 11px;background:var(--ink);border:1px solid var(--line);
+  border-radius:6px;color:var(--paper);font-size:13px;
+}
+
+.cart-items{flex:1 1 auto;display:flex;flex-direction:column;gap:14px;margin-bottom:16px;min-height:40px;}
+.cart-empty{color:var(--muted);font-size:14px;text-align:center;padding:34px 0;}
+
+.cart-item{
+  display:grid;grid-template-columns:1fr auto auto auto;align-items:center;gap:10px;
+  border-bottom:1px solid var(--line);padding-bottom:12px;position:relative;
+}
+.cart-item-info{display:flex;flex-direction:column;gap:3px;min-width:0;}
+.cart-item-info strong{font-size:13.5px;line-height:1.25;}
+.cart-item-unit{font-size:11.5px;color:var(--muted);}
+.cart-item-unit s{margin-right:4px;}
+.cart-item-club-note{font-size:10.5px;color:var(--brass);font-style:normal;}
+.cart-item-tier-note{font-size:10.5px;color:var(--blue);font-style:normal;}
+.cart-item-qty{display:flex;align-items:center;gap:6px;}
+.cart-item-qty button{
+  width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:var(--surface-2);
+  color:var(--paper);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;
+}
+.cart-item-qty span{font-size:13px;min-width:16px;text-align:center;}
+.cart-item-subtotal{font-family:var(--font-display);font-size:15px;color:var(--brass);white-space:nowrap;}
+.cart-item-remove{
+  background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;
+  width:26px;height:26px;display:flex;align-items:center;justify-content:center;line-height:1;
+}
+.cart-item-remove:hover{color:var(--red);}
+
+.cart-drawer-foot{border-top:1px solid var(--line);padding-top:16px;margin-top:auto;flex:0 0 auto;}
+.cart-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-weight:700;}
+.cart-total-row strong{font-family:var(--font-display);font-size:24px;color:var(--brass);}
+#cartCheckout:disabled{opacity:.5;cursor:not-allowed;}
+.cart-continue{display:block;text-align:center;font-size:13px;color:var(--muted);margin-top:12px;text-decoration:underline;}
+
+/* ---------- mobile: painel ocupa a largura toda, sem cortes ---------- */
+@media (max-width:520px){
+  .cart-drawer{width:100%;padding:18px;}
+  .cart-drawer-head h2{font-size:clamp(19px,5.5vw,23px);}
+  .cart-item{grid-template-columns:1fr auto;padding-right:28px;}
+  .cart-item-qty{grid-column:1;grid-row:2;}
+  .cart-item-subtotal{grid-column:2;grid-row:2;justify-self:end;}
+  .cart-item-remove{position:absolute;top:0;right:0;}
+  .cart-member-toggle{font-size:clamp(12px,3.4vw,13px);}
+}
